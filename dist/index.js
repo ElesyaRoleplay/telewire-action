@@ -52610,7 +52610,6 @@ Issue Comment:
     case "push":
       return `
 ${ipstatus}
-${tgtoken}
 ${chatid}
 ${ititle}
 ${inum}
