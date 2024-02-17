@@ -120,84 +120,82 @@ const evresp = (gevent) => {
   switch (gevent) {
     case "issues":
       return `
-Nuovi problemi in arrivo
+✉️ __Nuovi problemi in arrivo__
+  __... e più precisamente su__ **${repo}**
 
 Issue ${prstate}
 
-Issue Title: ${ititle}
-Issue Number: [#${inum}](https://github.com/${repo}/issues/${inum})
-Commented or Created By: [${iactor}](https://github.com/${iactor})
-Issue Body: 
-${ibody}
+🔤 | Titolo dell'issue: __${ititle}__
+🧮 | Numero dell'issue: __[#${inum}](https://github.com/${repo}/issues/${inum})__
+🗿 | Commentata o creata da: [${iactor}](https://github.com/${iactor})
+🧥 | Corpo dell'issue: 
+**${ibody}**
 
-[Link to Issue](https://github.com/${repo}/issues/${inum})
-[Link to Repo](https://github.com/${repo}/)
-[Build log here](https://github.com/${repo}/commit/${sha}/checks)`;
+[📎📄 Link all'Issue](https://github.com/${repo}/issues/${inum})
+[📎🗂 Link alla Repo](https://github.com/${repo}/)
+[📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
     case "issue_comment":
       return `
+✉️ __Qualcuno ha commentato i problemi__
+  __... e più precisamente su__ **${repo}**
 
+🔤 | Titolo dell'issue: __${ititle}__
+🧮 | Numero dell'issue: __[#${inum}](https://github.com/${repo}/issues/${inum})__
+🗿 | Commentata o creata da: [${iactor}](https://github.com/${iactor})
+🧥 | Corpo dell'issue: 
+**${ibody}**
+Issue Comment: 
+**${process.env.INPUT_IU_COM}**
 
-Issue ${prstate}
+[📎📄 Link all'Issue](https://github.com/${repo}/issues/${inum})
+[📎🗂 Link alla Repo](https://github.com/${repo}/)
+[📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)
+`;
+case "push":
+      return `
+✉️ __Qualcuno ha messo qualcosa__
+  __... e più precisamente su__ **${repo}**
 
-Issue Title and Number: ${ititle} | #${inum}
-Commented or Created By: \`${iactor}\`
-Issue Body: *${ibody}*
-Issue Comment: \`${process.env.INPUT_IU_COM}\`
+Push
 
-[Link to Issue](https://github.com/${repo}/issues/${inum})
-[Link to Repo ](https://github.com/${repo}/)
-[Build log here](https://github.com/${repo}/commit/${sha}/checks)
-            `;
+🔤 | Titolo dell'issue: __${ititle}__
+🧮 | Numero dell'issue: __[#${inum}](https://github.com/${repo}/issues/${inum})__
+🗿 | Commentata o creata da: [${iactor}](https://github.com/${iactor})
+🧥 | Corpo dell'issue: 
+**${ibody}**
+
+[📎📄 Link all'Issue](https://github.com/${repo}/issues/${inum})
+[📎🗂 Link alla Repo](https://github.com/${repo}/)
+[📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
     case "pull_request":
       return `
-🔃🔀🔃🔀🔃🔀
+✉️ __Qualcuno ha migliorato qualcosa e ora vuole aggiungerla__
+  __... e più precisamente su__ **${repo}**
+
 PR ${prstate} 
-        
-PR Number: ${pnum}  
-PR Title: ${ptitle}  
-PR Body: *${pbody}*
-PR By: ${ghactor}
 
-[Link to Issue](https://github.com/${repo}/pull/${pnum})
-[Link to Repo ](https://github.com/${repo}/)
-[Build log here](https://github.com/${repo}/commit/${sha}/checks)`;
-    case "watch":
-      return `
-⭐️⭐️⭐️
+🔤 | PR Title: ${ptitle}  
+🧮 | PR Number: ${pnum}
+🗿 | PR By: ${ghactor}
+🧥 | PR Body:
+**${pbody}**
 
-By: *${ghactor}* 
-\`Repository: ${repo}\`
-Star Count: ${process.env.INPUT_STARGAZERS}
-Fork Count: ${process.env.INPUT_FORKERS}
-        
-[Link to Repo](https://github.com/${repo}/)
-            `;
-    case "schedule":
-      return `
-⏱⏰⏱⏰⏱⏰
-        
-ID: ${ghwrkflw}
-        
-Run *${ipstatus}!*
-*Action was Run on Schedule*
-\`Repository:  ${repo}\`
-
-[Link to Repo ](https://github.com/${repo}/)
-            `;
+[📎📄 Link alla PR](https://github.com/${repo}/pull/${pnum})
+[📎🗂 Link alla Repo](https://github.com/${repo}/)
+[📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
     default:
       return `
 ⬆️⇅⬆️⇅
             
 ID: ${ghwrkflw}
         
-Action was a *${ipstatus}!*
-\`Repository: ${repo}\` 
-On: *${ghevent}*
-By: *${ghactor}* 
+L'azione era un *${ipstatus}!*
+Repository: ${repo}
+Su: *${ghevent}*
+Da: *${ghactor}* 
 Tag: ${process.env.GITHUB_REF}
         
-[Link to Repo ](https://github.com/${repo}/)
-            `;
+[Link to Repo ](https://github.com/${repo}/)`;
   }
 };
 const output = evresp(ghevent);
