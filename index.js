@@ -151,7 +151,7 @@ Issue Comment:
 [📎🗂 Link alla Repo](https://github.com/${repo}/)
 [📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)
 `;
-case "push":
+    case "push":
       return `
 ✉️ __Qualcuno ha messo qualcosa__
   __... e più precisamente su__ **${repo}**
