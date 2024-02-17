@@ -153,20 +153,22 @@ Issue Comment:
 `;
     case "push":
       return `
-✉️ __Qualcuno ha messo qualcosa__
-  __... e più precisamente su__ **${repo}**
-
-Push
-
-🔤 | Titolo dell'issue: __${ititle}__
-🧮 | Numero dell'issue: __[#${inum}](https://github.com/${repo}/issues/${inum})__
-🗿 | Commentata o creata da: [${iactor}](https://github.com/${iactor})
-🧥 | Corpo dell'issue: 
-**${ibody}**
-
-[📎📄 Link all'Issue](https://github.com/${repo}/issues/${inum})
-[📎🗂 Link alla Repo](https://github.com/${repo}/)
-[📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
+  INPUT_STATUS: ${ipstatus},
+  INPUT_TOKEN: ${tgtoken},
+  INPUT_CHAT: ${chatid},
+  INPUT_IU_TITLE: ${ititle},
+  INPUT_IU_NUM: ${inum},
+  INPUT_IU_ACTOR: ${iactor},
+  INPUT_IU_BODY: ${ibody},
+  INPUT_PR_NUM: ${pnum},
+  INPUT_PR_STATE: ${prstate},
+  INPUT_PR_TITLE: ${ptitle},
+  INPUT_PR_BODY: ${pbody},
+  GITHUB_EVENT_NAME: ${ghevent},
+  GITHUB_REPOSITORY: ${repo},
+  GITHUB_ACTOR: ${ghactor},
+  GITHUB_SHA: ${sha},
+  GITHUB_WORKFLOW: ${ghwrkflw}`;
     case "pull_request":
       return `
 ✉️ __Qualcuno ha migliorato qualcosa e ora vuole aggiungerla__
