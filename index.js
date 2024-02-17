@@ -161,14 +161,7 @@ Issue Comment:
   INPUT_IU_ACTOR: ${iactor},
   INPUT_IU_BODY: ${ibody},
   INPUT_PR_NUM: ${pnum},
-  INPUT_PR_STATE: ${prstate},
-  INPUT_PR_TITLE: ${ptitle},
-  INPUT_PR_BODY: ${pbody},
-  GITHUB_EVENT_NAME: ${ghevent},
-  GITHUB_REPOSITORY: ${repo},
-  GITHUB_ACTOR: ${ghactor},
-  GITHUB_SHA: ${sha},
-  GITHUB_WORKFLOW: ${ghwrkflw}`;
+  INPUT_PR_STATE: ${prstate},`;
     case "pull_request":
       return `
 ✉️ __Qualcuno ha migliorato qualcosa e ora vuole aggiungerla__
