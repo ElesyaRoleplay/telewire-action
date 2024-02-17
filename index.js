@@ -119,7 +119,8 @@ const evresp = (gevent) => {
 
   switch (gevent) {
     case "issues":
-      return `
+
+return `
 ✉️ __Nuovi problemi in arrivo__
   __... e più precisamente su__ **${repo}**
 
