@@ -1,31 +1,30 @@
-require("dotenv").config
-const Bot=require('node-telegram-bot-api');
+require("dotenv").config;
+const Bot = require("node-telegram-bot-api");
 const {
-    INPUT_STATUS: ipstatus,
-    INPUT_TOKEN: tgtoken,
-    INPUT_CHAT: chatid,
-    INPUT_IU_TITLE: ititle,
-    INPUT_IU_NUM: inum,
-    INPUT_IU_ACTOR: iactor,
-    INPUT_IU_BODY: ibody,
-    INPUT_PR_NUM: pnum,
-    INPUT_PR_STATE: prstate,
-    INPUT_PR_TITLE: ptitle,
-    INPUT_PR_BODY: pbody,
-    GITHUB_EVENT_NAME: ghevent,
-    GITHUB_REPOSITORY: repo,
-    GITHUB_ACTOR: ghactor,
-    GITHUB_SHA: sha,
-    GITHUB_WORKFLOW: ghwrkflw
+  INPUT_STATUS: ipstatus,
+  INPUT_TOKEN: tgtoken,
+  INPUT_CHAT: chatid,
+  INPUT_IU_TITLE: ititle,
+  INPUT_IU_NUM: inum,
+  INPUT_IU_ACTOR: iactor,
+  INPUT_IU_BODY: ibody,
+  INPUT_PR_NUM: pnum,
+  INPUT_PR_STATE: prstate,
+  INPUT_PR_TITLE: ptitle,
+  INPUT_PR_BODY: pbody,
+  GITHUB_EVENT_NAME: ghevent,
+  GITHUB_REPOSITORY: repo,
+  GITHUB_ACTOR: ghactor,
+  GITHUB_SHA: sha,
+  GITHUB_WORKFLOW: ghwrkflw,
 } = process.env;
 
-const bot=new Bot(tgtoken)
+const bot = new Bot(tgtoken);
 
 const evresp = (gevent) => {
-    switch (gevent) {
-
-        case "issues":
-            return `
+  switch (gevent) {
+    case "issues":
+      return `
 ❗️❗️❗️❗️❗️❗️
 
 Issue ${prstate}
@@ -36,9 +35,9 @@ Issue Body: *${ibody}*
 
 [Link to Issue](https://github.com/${repo}/issues/${inum})
 [Link to Repo ](https://github.com/${repo}/)
-[Build log here](https://github.com/${repo}/commit/${sha}/checks)`
-        case "issue_comment":
-            return `
+[Build log here](https://github.com/${repo}/commit/${sha}/checks)`;
+    case "issue_comment":
+      return `
 🗣🗣🗣🗣🗣🗣
 
 Issue ${prstate}
@@ -51,9 +50,9 @@ Issue Comment: \`${process.env.INPUT_IU_COM}\`
 [Link to Issue](https://github.com/${repo}/issues/${inum})
 [Link to Repo ](https://github.com/${repo}/)
 [Build log here](https://github.com/${repo}/commit/${sha}/checks)
-            `
-        case "pull_request":
-            return `
+            `;
+    case "pull_request":
+      return `
 🔃🔀🔃🔀🔃🔀
 PR ${prstate} 
         
@@ -64,9 +63,9 @@ PR By: ${ghactor}
 
 [Link to Issue](https://github.com/${repo}/pull/${pnum})
 [Link to Repo ](https://github.com/${repo}/)
-[Build log here](https://github.com/${repo}/commit/${sha}/checks)`
-        case "watch":
-            return `
+[Build log here](https://github.com/${repo}/commit/${sha}/checks)`;
+    case "watch":
+      return `
 ⭐️⭐️⭐️
 
 By: *${ghactor}* 
@@ -75,9 +74,9 @@ Star Count: ${process.env.INPUT_STARGAZERS}
 Fork Count: ${process.env.INPUT_FORKERS}
         
 [Link to Repo](https://github.com/${repo}/)
-            `
-        case "schedule":
-            return `
+            `;
+    case "schedule":
+      return `
 ⏱⏰⏱⏰⏱⏰
         
 ID: ${ghwrkflw}
@@ -87,9 +86,9 @@ Run *${ipstatus}!*
 \`Repository:  ${repo}\`
 
 [Link to Repo ](https://github.com/${repo}/)
-            `
-        default:
-            return `
+            `;
+    default:
+      return `
 ⬆️⇅⬆️⇅
             
 ID: ${ghwrkflw}
@@ -101,12 +100,17 @@ By: *${ghactor}*
 Tag: ${process.env.GITHUB_REF}
         
 [Link to Repo ](https://github.com/${repo}/)
-            `
-    }
-}
-const output = evresp(ghevent)
-bot.sendMessage(chatid,output,{parse_mode : "Markdown", message_thread_id : 56})
-bot.sendMessage(chatid,`
+            `;
+  }
+};
+const output = evresp(ghevent);
+bot.sendMessage(chatid, output, {
+  parse_mode: "Markdown",
+  message_thread_id: 56,
+});
+bot.sendMessage(
+  chatid,
+  `
                 Ab ab thin wha-been
 Ab been thin wha-been
 
@@ -203,4 +207,6 @@ Ab-wha-ab-wha thin, wha-been
 Ab ab thin, wha-been
 Been been thin, wha-been
 Ab-wha-two-been thin, what
-    `,{parse_mode : "Markdown", message_thread_id : 56})
+    `,
+  { parse_mode: "Markdown", message_thread_id: 56 },
+);
