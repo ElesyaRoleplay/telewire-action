@@ -99,9 +99,7 @@ Issue Title: ${ititle}
 Issue Number: [#${inum}](https://github.com/${repo}/issues/${inum})
 Commented or Created By: [${iactor}](https://github.com/${iactor})
 Issue Body: 
-***
 ${ibody}
-***
 
 [Link to Issue](https://github.com/${repo}/issues/${inum})
 [Link to Repo](https://github.com/${repo}/)
