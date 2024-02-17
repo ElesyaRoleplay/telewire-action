@@ -52478,23 +52478,93 @@ const {
 const bot = new Bot(tgtoken);
 
 const evresp = (gevent) => {
+  switch(prstate){
+    case "opened":
+      prstate = "aperta";
+    case "closed":
+      prstate = "chiusa";
+    case "deleted":
+      prstate = "eliminata";
+    case "transferred":
+      prstate = "trasferita";
+    case "pinned":
+      prstate = "pinnata";
+    case "unpinned":
+      prstate = "unpinnata";
+    case "reopened":
+      prstate = "riaperta";
+    case "assigned":
+      prstate = "assegnata";
+    case "unassigned":
+      prstate = "disassegnata";
+    case "locked":
+      prstate = "bloccata";
+    case "unlocked":
+      prstate = "sbloccata";
+    case "created":
+      prstate = "creata";
+    case "answered":
+      prstate = "riisposta";
+    case "edited":
+      prstate = "modificata";
+    case "requested":
+      prstate = "richiesta";
+    case "completed":
+      prstate = "completata";
+    case "moved":
+      prstate = "spostata";
+    case "converted":
+      prstate = "convertita";
+    case "synchronize":
+      prstate = "sincronizzata";
+    case "converted_to_draft":
+      prstate = "convertita a bozza";
+    case "enqueued":
+      prstate = "messa in coda";
+    case "dequeued":
+      prstate = "tolta dalla coda";
+    case "ready_for_review":
+      prstate = "pronta alla review";
+    case "review_requested":
+      prstate = "richiesta review";
+    case "dismissed":
+      prstate = "deposta";
+    case "published":
+      prstate = "pubblicato";
+    case "updated":
+      prstate = "aggiornato";
+    case "released":
+      prstate = "rilasciato";
+    case "prereleased":
+      prstate = "rilasciato in preview";
+    case "started":
+      prstate = "startato";
+    case "in_progress":
+      prstate = "in progresso";
+      
+  }
+  
   switch (gevent) {
     case "issues":
       return `
-❗️❗️❗️❗️❗️❗️
+Nuovi problemi in arrivo
 
 Issue ${prstate}
 
-Issue Title and Number: ${ititle} | #${inum}
-Commented or Created By: \`${iactor}\`
-Issue Body: *${ibody}*
+Issue Title: ${ititle}
+Issue Number: [#${inum}](https://github.com/${repo}/issues/${inum})
+Commented or Created By: [${iactor}](https://github.com/${iactor})
+Issue Body: 
+***
+${ibody}
+***
 
 [Link to Issue](https://github.com/${repo}/issues/${inum})
-[Link to Repo ](https://github.com/${repo}/)
+[Link to Repo](https://github.com/${repo}/)
 [Build log here](https://github.com/${repo}/commit/${sha}/checks)`;
     case "issue_comment":
       return `
-🗣🗣🗣🗣🗣🗣
+Q
 
 Issue ${prstate}
 
