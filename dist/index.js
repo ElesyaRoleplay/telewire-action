@@ -52478,72 +52478,101 @@ let {
 const bot = new Bot(tgtoken);
 
 const evresp = (gevent) => {
-  switch(prstate){
+  switch (prstate) {
     case "opened":
       prstate = "aperta";
+      break;
     case "closed":
       prstate = "chiusa";
+      break;
     case "deleted":
       prstate = "eliminata";
+      break;
     case "transferred":
       prstate = "trasferita";
+      break;
     case "pinned":
       prstate = "pinnata";
+      break;
     case "unpinned":
       prstate = "unpinnata";
+      break;
     case "reopened":
       prstate = "riaperta";
+      break;
     case "assigned":
       prstate = "assegnata";
+      break;
     case "unassigned":
       prstate = "disassegnata";
+      break;
     case "locked":
       prstate = "bloccata";
+      break;
     case "unlocked":
       prstate = "sbloccata";
+      break;
     case "created":
       prstate = "creata";
+      break;
     case "answered":
       prstate = "riisposta";
+      break;
     case "edited":
       prstate = "modificata";
+      break;
     case "requested":
       prstate = "richiesta";
+      break;
     case "completed":
       prstate = "completata";
+      break;
     case "moved":
       prstate = "spostata";
+      break;
     case "converted":
       prstate = "convertita";
+      break;
     case "synchronize":
       prstate = "sincronizzata";
+      break;
     case "converted_to_draft":
       prstate = "convertita a bozza";
+      break;
     case "enqueued":
       prstate = "messa in coda";
+      break;
     case "dequeued":
       prstate = "tolta dalla coda";
+      break;
     case "ready_for_review":
       prstate = "pronta alla review";
+      break;
     case "review_requested":
       prstate = "richiesta review";
+      break;
     case "dismissed":
       prstate = "deposta";
+      break;
     case "published":
       prstate = "pubblicato";
+      break;
     case "updated":
       prstate = "aggiornato";
+      break;
     case "released":
       prstate = "rilasciato";
+      break;
     case "prereleased":
       prstate = "rilasciato in preview";
+      break;
     case "started":
       prstate = "startato";
+      break;
     case "in_progress":
       prstate = "in progresso";
-      
   }
-  
+
   switch (gevent) {
     case "issues":
       return `
@@ -52562,7 +52591,7 @@ ${ibody}
 [Build log here](https://github.com/${repo}/commit/${sha}/checks)`;
     case "issue_comment":
       return `
-Q
+
 
 Issue ${prstate}
 
