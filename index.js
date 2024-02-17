@@ -60,7 +60,7 @@ const evresp = (gevent) => {
       prstate = "creata";
       break;
     case "answered":
-      prstate = "riisposta";
+      prstate = "risposta";
       break;
     case "edited":
       prstate = "modificata";
@@ -153,15 +153,23 @@ Issue Comment:
 `;
     case "push":
       return `
-  INPUT_STATUS: ${ipstatus},
-  INPUT_TOKEN: ${tgtoken},
-  INPUT_CHAT: ${chatid},
-  INPUT_IU_TITLE: ${ititle},
-  INPUT_IU_NUM: ${inum},
-  INPUT_IU_ACTOR: ${iactor},
-  INPUT_IU_BODY: ${ibody},
-  INPUT_PR_NUM: ${pnum},
-  INPUT_PR_STATE: ${prstate},`;
+${ipstatus}
+${tgtoken}
+${chatid}
+${ititle}
+${inum}
+${iactor}
+${ibody}
+${pnum}
+${prstate}
+${ptitle}
+${pbody}
+${ghevent}
+${repo}
+${ghactor}
+${sha}
+${ghwrkflw}
+`;
     case "pull_request":
       return `
 ✉️ __Qualcuno ha migliorato qualcosa e ora vuole aggiungerla__
