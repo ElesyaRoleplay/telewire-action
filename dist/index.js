@@ -52468,6 +52468,11 @@ let {
   INPUT_PR_STATE: prstate,
   INPUT_PR_TITLE: ptitle,
   INPUT_PR_BODY: pbody,
+  INPUT_PS_HEAD_ID: psheadid,
+  INPUT_PS_HEAD_AUTHOR_USERNAME: psauthoruser,
+  INPUT_PS_HEAD_MESSAGE: psheadmess,
+  INPUT_PS_COMPARE: pscompare,
+  INPUT_PS_SENDER_IMAGE: psimage,
   GITHUB_EVENT_NAME: ghevent,
   GITHUB_REPOSITORY: repo,
   GITHUB_ACTOR: ghactor,
@@ -52575,33 +52580,34 @@ const evresp = (gevent) => {
 
   switch (gevent) {
     case "issues":
-      return `
-✉️ __Nuovi problemi in arrivo__
-  __... e più precisamente su__ **${repo}**
+
+return `
+✉️ _Nuovi problemi in arrivo_
+  _... e più precisamente su_ *${repo}*
 
 Issue ${prstate}
 
-🔤 | Titolo dell'issue: __${ititle}__
-🧮 | Numero dell'issue: __[#${inum}](https://github.com/${repo}/issues/${inum})__
+🔤 | Titolo dell'issue: _${ititle}_
+🧮 | Numero dell'issue: _[#${inum}](https://github.com/${repo}/issues/${inum})_
 🗿 | Commentata o creata da: [${iactor}](https://github.com/${iactor})
 🧥 | Corpo dell'issue: 
-**${ibody}**
+*${ibody}*
 
 [📎📄 Link all'Issue](https://github.com/${repo}/issues/${inum})
 [📎🗂 Link alla Repo](https://github.com/${repo}/)
 [📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
     case "issue_comment":
       return `
-✉️ __Qualcuno ha commentato i problemi__
-  __... e più precisamente su__ **${repo}**
+✉️ _Qualcuno ha commentato i problemi_
+  _... e più precisamente su_ *${repo}*
 
-🔤 | Titolo dell'issue: __${ititle}__
-🧮 | Numero dell'issue: __[#${inum}](https://github.com/${repo}/issues/${inum})__
+🔤 | Titolo dell'issue: _${ititle}_
+🧮 | Numero dell'issue: _[#${inum}](https://github.com/${repo}/issues/${inum})_
 🗿 | Commentata o creata da: [${iactor}](https://github.com/${iactor})
 🧥 | Corpo dell'issue: 
-**${ibody}**
+*${ibody}*
 Issue Comment: 
-**${process.env.INPUT_IU_COM}**
+*${process.env.INPUT_IU_COM}*
 
 [📎📄 Link all'Issue](https://github.com/${repo}/issues/${inum})
 [📎🗂 Link alla Repo](https://github.com/${repo}/)
@@ -52609,34 +52615,30 @@ Issue Comment:
 `;
     case "push":
       return `
-${ipstatus}
-${chatid}
-${ititle}
-${inum}
-${iactor}
-${ibody}
-${pnum}
-${prstate}
-${ptitle}
-${pbody}
-${ghevent}
-${repo}
-${ghactor}
-${sha}
-${ghwrkflw}
+✉️ _Qualcuno ha aggiunto qualcosa_
+  _... e più precisamente su_ *${repo}*
+
+🧮 | Numero dell'issue: _[#${psheadid}](https://github.com/${repo}/issues/${psheadid})_
+🗿 | Commentata o creata da: [${psauthoruser}](https://github.com/${psauthoruser})
+🧥 | Corpo dell'issue: 
+*${psheadmess}*
+
+[📎📄 Compare](${pscompare})
+[📎🗂 Link alla Repo](https://github.com/${repo}/)
+[📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)
 `;
     case "pull_request":
       return `
-✉️ __Qualcuno ha migliorato qualcosa e ora vuole aggiungerla__
-  __... e più precisamente su__ **${repo}**
+✉️ _Qualcuno ha migliorato qualcosa e ora vuole aggiungerla_
+  _... e più precisamente su_ *${repo}*
 
 PR ${prstate} 
 
-🔤 | PR Title: ${ptitle}  
-🧮 | PR Number: ${pnum}
-🗿 | PR By: ${ghactor}
-🧥 | PR Body:
-**${pbody}**
+🔤 | Titolo della PR: ${ptitle}  
+🧮 | Numero della PR: ${pnum}
+🗿 | Autore della PR: ${ghactor}
+🧥 | Corpo della PR:
+*${pbody}*
 
 [📎📄 Link alla PR](https://github.com/${repo}/pull/${pnum})
 [📎🗂 Link alla Repo](https://github.com/${repo}/)
@@ -52658,8 +52660,15 @@ Tag: ${process.env.GITHUB_REF}
 };
 const output = evresp(ghevent);
 bot.sendMessage(chatid, output, {
-  parse_mode: "Markdown",
+  parse_mode: "Markdownv2",
   message_thread_id: 56,
+  link_preview_options: {
+    is_disabled: false,
+    url: psimage,
+    prefer_small_media: true,
+    prefer_big_media: false,
+    show_above_text: false
+  }
 });
 
 })();
