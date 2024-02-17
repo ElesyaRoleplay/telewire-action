@@ -203,7 +203,7 @@ Tag: ${process.env.GITHUB_REF}
   }
 };
 const output = evresp(ghevent);
-psimage = psimage.replace(".", "\\.");
+psimage = psimage.replaceAll(".", "\\.");
 console.log(psimage);
 bot.sendMessage(chatid, output, {
   parse_mode: "Markdownv2",
