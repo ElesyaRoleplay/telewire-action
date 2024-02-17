@@ -12,6 +12,11 @@ let {
   INPUT_PR_STATE: prstate,
   INPUT_PR_TITLE: ptitle,
   INPUT_PR_BODY: pbody,
+  INPUT_PS_HEAD_ID: psheadid,
+  INPUT_PS_HEAD_AUTHOR_USERNAME: psauthoruser,
+  INPUT_PS_HEAD_MESSAGE: psheadmess,
+  INPUT_PS_COMPARE: pscompare,
+  INPUT_PS_SENDER_IMAGE: psimage,
   GITHUB_EVENT_NAME: ghevent,
   GITHUB_REPOSITORY: repo,
   GITHUB_ACTOR: ghactor,
@@ -119,7 +124,8 @@ const evresp = (gevent) => {
 
   switch (gevent) {
     case "issues":
-      return `
+
+return `
 ✉️ __Nuovi problemi in arrivo__
   __... e più precisamente su__ **${repo}**
 
@@ -153,21 +159,6 @@ Issue Comment:
 `;
     case "push":
       return `
-${ipstatus}
-${chatid}
-${ititle}
-${inum}
-${iactor}
-${ibody}
-${pnum}
-${prstate}
-${ptitle}
-${pbody}
-${ghevent}
-${repo}
-${ghactor}
-${sha}
-${ghwrkflw}
 `;
     case "pull_request":
       return `
