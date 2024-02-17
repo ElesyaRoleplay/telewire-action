@@ -203,12 +203,13 @@ Tag: ${process.env.GITHUB_REF}
   }
 };
 const output = evresp(ghevent);
+psimage = psimage.replace(".", "\\.");
 bot.sendMessage(chatid, output, {
   parse_mode: "Markdownv2",
   message_thread_id: 56,
   link_preview_options: {
     is_disabled: false,
-    url: psimage.replace(".", "\\."),
+    url: psimage,
     prefer_small_media: true,
     prefer_big_media: false,
     show_above_text: false
