@@ -52659,9 +52659,8 @@ Tag: ${process.env.GITHUB_REF}
   }
 };
 const output = evresp(ghevent);
-console.log(psimage);
 bot.sendMessage(chatid, output, {
-  parse_mode: "Markdownv2",
+  parse_mode: "Markdown",
   message_thread_id: 56,
   link_preview_options: {
     is_disabled: false,
