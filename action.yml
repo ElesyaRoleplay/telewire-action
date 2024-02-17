@@ -44,6 +44,21 @@ inputs:
   pr_body:
     description: 'Body/Contents of the PR'
     default: ${{ github.event.pull_request.body }}
+  ps_head_id:
+    description: 'Head Commit ID'
+    default: ${{ github.event.head_commit.id }}
+  ps_head_author_username:
+    description: 'Username of the pusher'
+    default: ${{ github.event.sender.login }}
+  ps_head_message:
+    description: 'Message of the commit'
+    default: ${{ github.event.head_commit.message }}
+  ps_compare:
+    description: 'Body/Contents of the PR'
+    default: ${{ github.event.compare }}
+  ps_sender_image:
+    description: 'Body/Contents of the PR'
+    default: ${{ github.event.sender.avatar_url }}
 runs:
   using: "node12"
   main: "dist/index.js"
