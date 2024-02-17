@@ -52456,7 +52456,7 @@ var __webpack_exports__ = {};
 (() => {
 (__nccwpck_require__(4754)/* .config */ .v);
 const Bot = __nccwpck_require__(8361);
-const {
+let {
   INPUT_STATUS: ipstatus,
   INPUT_TOKEN: tgtoken,
   INPUT_CHAT: chatid,
