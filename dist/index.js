@@ -52659,7 +52659,7 @@ Tag: ${process.env.GITHUB_REF}
   }
 };
 const output = evresp(ghevent);
-psimage.replace(".", "\\.");
+psimage = psimage.replace(".", "\\.");
 bot.sendMessage(chatid, output, {
   parse_mode: "Markdownv2",
   message_thread_id: 56,
