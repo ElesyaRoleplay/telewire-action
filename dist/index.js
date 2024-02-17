@@ -52618,9 +52618,9 @@ Issue Comment:
 ✉️ _Qualcuno ha aggiunto qualcosa_
   _... e più precisamente su_ *${repo}*
 
-🧮 | Numero dell'issue: [#${psheadid.slice(0, 7)}](https://github.com/${repo}/issues/${psheadid})
-🗿 | Commentata o creata da: [${psauthoruser}](https://github.com/${psauthoruser})
-🧥 | Corpo dell'issue: 
+🧮 | ID dell'head: [#${psheadid.slice(0, 7)}](https://github.com/${repo}/issues/${psheadid})
+🗿 | Pushata da: [${psauthoruser}](https://github.com/${psauthoruser})
+🧥 | Messaggio dell'head: 
 *${psheadmess}*
 
 [📎📄 Compare](${pscompare})
