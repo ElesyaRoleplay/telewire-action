@@ -97,10 +97,18 @@
     "verror": "^1.10.0",
     "wrappy": "^1.0.2"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bundle": "npm run format:write && npm run package",
+    "ci-test": "jest",
+    "format:write": "prettier --write **/*.js",
+    "format:check": "prettier --check **/*.js",
+    "lint": "npx eslint . -c ./.github/linters/.eslintrc.yml",
+    "package": "ncc build index.js",
+    "package:watch": "npm run package -- --watch",
+    "test": "(jest && make-coverage-badge --output-path ./badges/coverage.svg) || make-coverage-badge --output-path ./badges/coverage.svg",
+    "all": "npm run format:write && npm run lint && npm run test && npm run package"
   },
+  "devDependencies": {},
   "author": "",
   "license": "MIT"
 }
