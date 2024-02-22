@@ -52473,6 +52473,9 @@ let {
   INPUT_PS_HEAD_MESSAGE: psheadmess,
   INPUT_PS_COMPARE: pscompare,
   INPUT_PS_SENDER_IMAGE: psimage,
+  INPUT_WR_NAME: wrname,
+  INPUT_WR_ID: wrid,
+  INPUT_WR_URL: wrurl,
   GITHUB_EVENT_NAME: ghevent,
   GITHUB_REPOSITORY: repo,
   GITHUB_ACTOR: ghactor,
@@ -52618,7 +52621,7 @@ Issue Comment:
 ✉️ _Qualcuno ha aggiunto qualcosa_
   _... e più precisamente su_ *${repo}*
 
-🧮 | ID dell'head: [#${psheadid.slice(0, 7)}](https://github.com/${repo}/issues/${psheadid})
+🧮 | ID dell'head: [#${psheadid.slice(0, 7)}](https://github.com/${repo}/commit/${psheadid})
 🗿 | Pushata da: [${psauthoruser}](https://github.com/${psauthoruser})
 🧥 | Messaggio dell'head: 
 *${psheadmess}*
@@ -52642,6 +52645,19 @@ PR ${prstate}
 
 [📎📄 Link alla PR](https://github.com/${repo}/pull/${pnum})
 [📎🗂 Link alla Repo](https://github.com/${repo}/)
+[📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
+    case "workflow_run":
+      return (ipstate === "success" ? "✅ _Sembra che tutto sia andato bene, strano_" : "🆘 _STA ANDANDO TUTTO A PUTTANE_")` 
+  _... e più precisamente su_ *${repo}*
+
+🔤 | Action: ${wrname}  
+🧮 | ID dell'action: ${wrid}
+🗿 | Action triggerata da: [${psauthoruser}](https://github.com/${psauthoruser})
+🧥 | Messaggio dell'head: 
+*${psheadmess}*
+
+[📎🗂 Link alla Repo](https://github.com/${repo}/)
+[📎🧾 Action log](${wrurl})
 [📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
     default:
       return `
