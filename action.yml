@@ -59,6 +59,16 @@ inputs:
   ps_sender_image:
     description: 'Body/Contents of the PR'
     default: ${{ github.event.sender.avatar_url }}
+  wr_name:
+    description: 'Workflow Name'
+    default: ${{ github.workflow.name }}
+  wr_id:
+    description: 'Workflow ID'
+    default: ${{ github.workflow.id }}
+  wr_url:
+    description: 'Workflow URL'
+    default: ${{ github.event.workflow_run.head_repository.html_url }}
+    
 runs:
   using: "node12"
   main: "dist/index.js"
