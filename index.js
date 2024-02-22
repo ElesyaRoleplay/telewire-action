@@ -191,7 +191,7 @@ PR ${prstate}
 [📎🗂 Link alla Repo](https://github.com/${repo}/)
 [📎🧾 Build log](https://github.com/${repo}/commit/${sha}/checks)`;
     case "workflow_run":
-      return (ipstate === "success" ? "✅ _Sembra che tutto sia andato bene, strano_" : "🆘 _STA ANDANDO TUTTO A PUTTANE_")` 
+      return (ipstatus === "success" ? "✅ _Sembra che tutto sia andato bene, strano_" : "🆘 _STA ANDANDO TUTTO A PUTTANE_")` 
   _... e più precisamente su_ *${repo}*
 
 🔤 | Action: ${wrname}  
