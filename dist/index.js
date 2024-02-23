@@ -52623,6 +52623,7 @@ Issue Comment:
 
 🧮 | ID dell'head: [#${psheadid.slice(0, 7)}](https://github.com/${repo}/commit/${psheadid})
 🗿 | Pushata da: [${psauthoruser}](https://github.com/${psauthoruser})
+🌿 | Branch: ${process.env.GITHUB_REF.replaceAll("refs/heads/", "")}
 🧥 | Messaggio dell'head: 
 *${psheadmess}*
 
