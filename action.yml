@@ -68,7 +68,9 @@ inputs:
   wr_url:
     description: 'Workflow URL'
     default: ${{ github.event.workflow_run.head_repository.html_url }}
-    
+  wr_comp:
+    description: 'Idk'
+    default: ${{ github.event.workflow_run.conclusion }} 
 runs:
   using: "node12"
   main: "dist/index.js"
